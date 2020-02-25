@@ -10,7 +10,7 @@
     <input type="text" ref="input" />
     <button v-on:click="readRefs()">Submit</button>
     <p>Fav Food: {{output}}</p>
-    <div ref="test">dd</div>
+    <div ref="test"> {{test}}dd</div>
   </div>
 
   <script>
@@ -19,12 +19,12 @@
       data: {
         message: 'Refs',
         output: 'Your fav food',
-        test: 'greet'
+        test: ''
       },
       methods: {
         readRefs: function () {
           console.log(this.$refs.input.value);
-          console.log(this.$refs.test.innertext);
+          console.log(this.$refs.test.innerText);
           this.output = this.$refs.input.value;
         }
       },
