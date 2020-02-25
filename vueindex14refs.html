@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<body>
+
+  <div id="app">
+    <h1>{{ message }}</h1>
+
+    <input type="text" ref="input" />
+    <button v-on:click="readRefs()">Submit</button>
+    <p>Fav Food: {{output}}</p>
+    <div ref="test">dd</div>
+  </div>
+
+  <script>
+    var myObject = new Vue({
+      el: '#app',
+      data: {
+        message: 'Refs',
+        output: 'Your fav food',
+        test: 'greet'
+      },
+      methods: {
+        readRefs: function () {
+          console.log(this.$refs.input.value);
+          console.log(this.$refs.test.innertext);
+          this.output = this.$refs.input.value;
+        }
+      },
+    })
+  </script>
+
+</body>
+
+</html>

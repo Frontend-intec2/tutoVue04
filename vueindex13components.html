@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<body>
+  <div id="app">
+
+    <h1>{{message}}</h1>
+  </div>
+  <div id="vue-app-one">
+    <h2>Vue app one</h2>
+    <greeting></greeting>
+  </div>
+
+  <div id="vue-app-two">
+    <h2>Vue app two</h2>
+    <greeting></greeting>
+  </div>
+
+  </div>
+  <!--2.23-->
+  <script>
+    var myObject = new Vue({
+      el: '#app',
+      data: {
+        message: 'Components'
+      }
+    })
+    var data = {
+      name: 'Yoshi',
+    }
+
+    Vue.component('greeting', {
+      template: '<p> Hey there, I am {{name}}. <button v-on:click="changeName"> Change name </button></p>',
+      /*5.32*/
+
+
+      /*We are putting Yoshi here (not on line 30) to have a fresh, individual component when we button*/
+      data: function () {
+        return {
+          name: 'Yoshi'
+        }
+      },
+      methods: {
+        changeName: function () {
+          this.name = 'Mario';
+        }
+      }
+    });
+
+    new Vue({
+      el: '#vue-app-one'
+    })
+
+    new Vue({
+      el: '#vue-app-two'
+    });
+  </script>
+
+</body>
+
+</html>
